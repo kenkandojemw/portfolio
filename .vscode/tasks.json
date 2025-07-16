@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Create Vite React App",
+			"command": "npm create vite@latest . -- --template react",
+			"group": "build",
+			"problemMatcher": [],
+			"args": []
+		}
+	]
+}
