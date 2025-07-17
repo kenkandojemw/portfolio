@@ -1366,6 +1366,12 @@ html {
   gap: 1.25rem;
 }
 
+.contact-details .contact-item {
+  min-height: 60px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .contact-item {
   display: flex;
   align-items: center;
@@ -2208,7 +2214,7 @@ html {
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  color: var(--primary-color);
+  color: #2563eb; /* blue color */
   font-weight: bold;
   transition: all 0.3s ease;
   padding: 0.5rem;
@@ -2221,7 +2227,7 @@ html {
 }
 
 .close-button:hover {
-  background: var(--primary-color);
+  background: #2563eb; /* blue background on hover */
   color: white;
   transform: scale(1.1);
 }

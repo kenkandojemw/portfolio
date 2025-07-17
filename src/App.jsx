@@ -504,7 +504,7 @@ function App() {
             <div className="contact-badges">
               <span className="contact-badge">
                 <i className="fas fa-map-marker-alt"></i>
-                <span className="badge-text">Malawi</span>
+                <span className="badge-text">Malawi, Blantyre</span>
               </span>
               <span className="contact-badge">
                 <i className="fas fa-globe"></i>
@@ -707,7 +707,7 @@ function App() {
                   </div>
                   <div className="contact-text">
                     <h3>Phone</h3>
-                    <a href="tel:+265991600060">+265 991 600 060</a>
+                <a href="https://wa.me/265991600060" target="_blank" rel="noopener noreferrer">+265 991 600 060</a>
                   </div>
                 </div>
                 
@@ -717,7 +717,7 @@ function App() {
                   </div>
                   <div className="contact-text">
                     <h3>Location</h3>
-                    <span>Malawi</span>
+                    <span>Malawi, Blantyre</span>
                   </div>
                 </div>
                 <div style={{ marginTop: '1.5rem', fontWeight: '600', fontSize: '1.1rem', color: 'var(--primary-color)', textAlign: 'center' }}>
