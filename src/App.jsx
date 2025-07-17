@@ -447,13 +447,9 @@ function App() {
                 <a href="https://linkedin.com/in/kenkandojemw" className="social-link" target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-linkedin"></i>
                 </a>
-                <a href="https://github.com/bsc-com-ne-15-20" className="social-link" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/kenkandojemw" className="social-link" target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-github"></i>
-                </a>
-                <a href="mailto:kenkandojemw@gmail.com" className="social-link" target="_blank" rel="noopener noreferrer">
-                  <i className="fas fa-envelope"></i>
-                  <span className="sr-only">Email</span>
-                </a>
+                </a>    
               </div>
             </div>
           </div>
@@ -609,12 +605,141 @@ function App() {
       </section>
 
       <section className="contact" id="contact">
-        <h2>Get in Touch</h2>
-        <div className="contact-content">
-          <div className="contact-info">
-            <p>Email: <a href="mailto:kenkandojemw@gmail.com">kenkandojemw@gmail.com</a></p>
-            <p>Phone: <a href="tel:+265991600060">+265 991 600 060</a></p>
-            <p>LinkedIn: <a href="https://linkedin.com/in/kenkandojemw" target="_blank" rel="noopener noreferrer">linkedin.com/in/kenkandojemw</a></p>
+        <div className="contact-container">
+          <div className="section-header">
+            <h2 className="section-title">Get In Touch</h2>
+            <div className="title-underline"></div>
+          </div>
+          
+          <div className="contact-content">
+            {/* Left Column - Contact Info */}
+            <div className="contact-info">
+              <div className="contact-details">
+                <div className="contact-item">
+                  <div className="contact-icon">
+                    <i className="fas fa-envelope"></i>
+                  </div>
+                  <div className="contact-text">
+                    <h3>Email</h3>
+                    <a href="mailto:kenkandojemw@gmail.com">kenkandojemw@gmail.com</a>
+                  </div>
+                </div>
+                
+                <div className="contact-item">
+                  <div className="contact-icon">
+                    <i className="fas fa-phone"></i>
+                  </div>
+                  <div className="contact-text">
+                    <h3>Phone</h3>
+                    <a href="tel:+265991600060">+265 991 600 060</a>
+                  </div>
+                </div>
+                
+                <div className="contact-item">
+                  <div className="contact-icon">
+                    <i className="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div className="contact-text">
+                    <h3>Location</h3>
+                    <span>Malawi</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="social-links">
+                <h3>Connect With Me</h3>
+                <div className="social-buttons">
+                  <a 
+                    href="https://linkedin.com/in/kenkandojemw" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="social-button linkedin"
+                    aria-label="LinkedIn Profile"
+                  >
+                    <i className="fab fa-linkedin-in"></i>
+                  </a>
+                  <a 
+                    href="https://github.com/kenkandojemw" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="social-button github"
+                    aria-label="GitHub Profile"
+                  >
+                    <i className="fab fa-github"></i>
+                  </a>
+                  <a 
+                    href="https://twitter.com/kenkandojemw" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="social-button twitter"
+                    aria-label="Twitter Profile"
+                  >
+                    <i className="fab fa-twitter"></i>
+                  </a>
+                  <a 
+                    href="mailto:kenkandojemw@gmail.com" 
+                    className="social-button email"
+                    aria-label="Send Email"
+                  >
+                    <i className="fas fa-envelope"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Column - Contact Form */}
+            <div className="contact-form">
+              <form className="contact-form-container">
+                <div className="form-group">
+                  <label htmlFor="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Your full name"
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="subject">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    required
+                    placeholder="What's this about?"
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows="5"
+                    placeholder="Tell me about your project or how I can help..."
+                  ></textarea>
+                </div>
+                
+                <button type="submit" className="submit-button">
+                  <i className="fas fa-paper-plane"></i>
+                  Send Message
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
