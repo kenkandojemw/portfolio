@@ -614,6 +614,9 @@ function App() {
           <div className="contact-content">
             {/* Left Column - Contact Info */}
             <div className="contact-info">
+              <div style={{ marginBottom: '1.5rem', fontWeight: '600', fontSize: '1.3rem', color: 'var(--primary-color)' }}>
+                Contact Information
+              </div>
               <div className="contact-details">
                 <div className="contact-item">
                   <div className="contact-icon">
@@ -644,16 +647,15 @@ function App() {
                     <span>Malawi</span>
                   </div>
                 </div>
-              </div>
-              
-              <div className="social-links">
-                <h3>Connect With Me</h3>
-                <div className="social-buttons">
+                <div style={{ marginTop: '1.5rem', fontWeight: '600', fontSize: '1.1rem', color: 'var(--primary-color)', textAlign: 'center' }}>
+                  Connect With Me
+                </div>
+                <div className="social-buttons" style={{ marginTop: '0.5rem', justifyContent: 'center', alignItems: 'center' }}>
                   <a 
                     href="https://linkedin.com/in/kenkandojemw" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="social-button linkedin"
+                    className="social-link linkedin"
                     aria-label="LinkedIn Profile"
                   >
                     <i className="fab fa-linkedin-in"></i>
@@ -662,7 +664,7 @@ function App() {
                     href="https://github.com/kenkandojemw" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="social-button github"
+                    className="social-link github"
                     aria-label="GitHub Profile"
                   >
                     <i className="fab fa-github"></i>
@@ -671,74 +673,74 @@ function App() {
                     href="https://twitter.com/kenkandojemw" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="social-button twitter"
+                    className="social-link twitter"
                     aria-label="Twitter Profile"
                   >
                     <i className="fab fa-twitter"></i>
-                  </a>
-                  <a 
-                    href="mailto:kenkandojemw@gmail.com" 
-                    className="social-button email"
-                    aria-label="Send Email"
-                  >
-                    <i className="fas fa-envelope"></i>
                   </a>
                 </div>
               </div>
             </div>
             
             {/* Right Column - Contact Form */}
-            <div className="contact-form">
-              <form className="contact-form-container">
-                <div className="form-group">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    placeholder="Your full name"
-                  />
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="subject">Subject</label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    required
-                    placeholder="What's this about?"
-                  />
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="message">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows="5"
-                    placeholder="Tell me about your project or how I can help..."
-                  ></textarea>
-                </div>
-                
-                <button type="submit" className="submit-button">
-                  <i className="fas fa-paper-plane"></i>
-                  Send Message
-                </button>
-              </form>
+            <div>
+              <div style={{ marginBottom: '1.5rem', fontWeight: '600', fontSize: '1.3rem', color: 'var(--primary-color)' }}>
+                Send Me a Message
+              </div>
+              <div className="contact-form">
+                <form className="contact-form-container">
+                  <div className="form-row">
+                    <div className="form-group half-width">
+                      <label htmlFor="name">Name</label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        placeholder="Your full name"
+                      />
+                    </div>
+                    
+                    <div className="form-group half-width">
+                      <label htmlFor="email">Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder="your.email@example.com"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="subject">Subject</label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      required
+                      placeholder="What's this about?"
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="message">Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows="5"
+                      placeholder="Tell me about your project or how I can help..."
+                    ></textarea>
+                  </div>
+                  
+                  <button type="submit" className="submit-button">
+                    <i className="fas fa-paper-plane"></i>
+                    Send Message
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
