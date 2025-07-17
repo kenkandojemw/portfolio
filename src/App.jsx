@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import './App.css';
 import './components/Profile.css';
 
@@ -133,6 +134,16 @@ function App() {
   const [selectedCert, setSelectedCert] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   
+  // Contact form state
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+  
   // ====================================================
   // THEME STATE MANAGEMENT
   // ====================================================
@@ -149,6 +160,68 @@ function App() {
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
       setSelectedCert(null); // Close modal
+    }
+  };
+
+  // Contact form handlers
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    // Basic validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus(null), 5000);
+      return;
+    }
+
+    try {
+      // EmailJS configuration - you'll need to replace these with your actual values
+      // See EMAILJS_SETUP.md for detailed setup instructions
+      const serviceId = 'service_e5bbvza'; // Your EmailJS service ID
+      const templateId = 'template_rzn9pr2'; // Your EmailJS template ID
+      const publicKey = 'Pxpe1bTp7navFqEWk'; // Your EmailJS public key
+
+      // Validate that EmailJS is configured
+      if (serviceId === 'YOUR_SERVICE_ID' || templateId === 'YOUR_TEMPLATE_ID' || publicKey === 'YOUR_PUBLIC_KEY') {
+        throw new Error('EmailJS not configured. Please check EMAILJS_SETUP.md for setup instructions.');
+      }
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'kenkandojemw@gmail.com', // Your email address
+        reply_to: formData.email
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' }); // Reset form
+      
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+      
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      setSubmitStatus('error');
+      
+      // Auto-hide error message after 8 seconds (longer for error)
+      setTimeout(() => setSubmitStatus(null), 8000);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -688,7 +761,22 @@ function App() {
                 Send Me a Message
               </div>
               <div className="contact-form">
-                <form className="contact-form-container">
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <div className="form-status success">
+                    <i className="fas fa-check-circle"></i>
+                    <span>Message sent successfully! I'll get back to you soon.</span>
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="form-status error">
+                    <i className="fas fa-exclamation-circle"></i>
+                    <span>Failed to send message. Please check all fields are filled and try again, or contact me directly at kenkandojemw@gmail.com</span>
+                  </div>
+                )}
+
+                <form className="contact-form-container" onSubmit={handleSubmit}>
                   <div className="form-row">
                     <div className="form-group half-width">
                       <label htmlFor="name">Name</label>
@@ -696,8 +784,11 @@ function App() {
                         type="text"
                         id="name"
                         name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
                         required
                         placeholder="Your full name"
+                        disabled={isSubmitting}
                       />
                     </div>
                     
@@ -707,8 +798,11 @@ function App() {
                         type="email"
                         id="email"
                         name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
                         required
                         placeholder="your.email@example.com"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -719,8 +813,11 @@ function App() {
                       type="text"
                       id="subject"
                       name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
                       required
                       placeholder="What's this about?"
+                      disabled={isSubmitting}
                     />
                   </div>
                   
@@ -729,15 +826,31 @@ function App() {
                     <textarea
                       id="message"
                       name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
                       required
                       rows="5"
                       placeholder="Tell me about your project or how I can help..."
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
                   
-                  <button type="submit" className="submit-button">
-                    <i className="fas fa-paper-plane"></i>
-                    Send Message
+                  <button 
+                    type="submit" 
+                    className="submit-button"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <i className="fas fa-spinner fa-spin"></i>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <i className="fas fa-paper-plane"></i>
+                        Send Message
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
