@@ -2121,7 +2121,7 @@ html {
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  color: var(--accent-color);
+  color: var(--primary-color);
   font-weight: bold;
   transition: all 0.3s ease;
   padding: 0.5rem;
@@ -2134,7 +2134,7 @@ html {
 }
 
 .close-button:hover {
-  background: var(--accent-color);
+  background: var(--primary-color);
   color: white;
   transform: scale(1.1);
 }
