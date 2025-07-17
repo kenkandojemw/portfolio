@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 /* ===========================================
    CSS CUSTOM PROPERTIES - THEME SYSTEM
@@ -1213,6 +1213,14 @@ html {
 .contact-container {
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.contact-content {
+  overflow-x: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .section-header {
@@ -1255,9 +1263,47 @@ html {
 
 .contact-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 35% 65%;
+  gap: 2rem;
   align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-form {
+  background: var(--surface-color);
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
+  transition: all 0.3s ease;
+}
+
+.contact-form:hover {
+  box-shadow: var(--hover-shadow);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.half-width {
+  flex: 1;
 }
 
 /* Left Column - Optimized Contact Info */
@@ -1277,7 +1323,7 @@ html {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.25rem 1.5rem;
+  padding: 0.75rem 1rem;
   background: var(--surface-color);
   border-radius: var(--border-radius-md);
   box-shadow: var(--card-shadow);
@@ -1285,6 +1331,8 @@ html {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  justify-content: flex-start !important; /* force left alignment */
+  text-align: left !important;
 }
 
 .contact-item::before {
@@ -1368,6 +1416,10 @@ html {
   font-size: 0.95rem;
   transition: color 0.3s ease;
   line-height: 1.3;
+  text-align: left; /* left align text */
+  display: block; /* ensure block for alignment */
+  margin: 0; /* reset margin */
+  padding: 0; /* reset padding */
 }
 
 .contact-text a:hover {
@@ -1403,10 +1455,11 @@ html {
 
 .social-buttons {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 1.5rem;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
 }
 
 .social-button {
@@ -1522,6 +1575,13 @@ html {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  max-width: 100%;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
 }
 
 .form-group {
@@ -1535,6 +1595,10 @@ html {
   color: var(--text-primary);
   font-size: 0.9rem;
   margin-bottom: 0.25rem;
+  /* Align labels with inputs */
+  display: block;
+  width: 100%;
+  text-align: left;
 }
 
 .form-group input,
@@ -1586,6 +1650,7 @@ html {
   gap: 0.5rem;
   position: relative;
   overflow: hidden;
+  margin-top: 1rem;
 }
 
 .submit-button::before {
@@ -1623,50 +1688,7 @@ html {
 @media (max-width: 968px) {
   .contact-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  
-  .contact-details {
-    gap: 1rem;
-  }
-  
-  .contact-item {
-    padding: 1.125rem 1.25rem;
-    gap: 0.875rem;
-  }
-  
-  .contact-icon {
-    width: 38px;
-    height: 38px;
-    font-size: 0.95rem;
-  }
-  
-  .social-button {
-    width: 46px;
-    height: 46px;
-    font-size: 1.05rem;
-  }
-  
-  .contact-form {
-    padding: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .contact {
-    padding: 3rem 1rem;
-  }
-  
-  .section-header {
-    margin-bottom: 2rem;
-  }
-  
-  .contact-content {
     gap: 2rem;
-  }
-  
-  .contact-info {
-    gap: 1.75rem;
   }
   
   .contact-details {
@@ -1684,24 +1706,6 @@ html {
     font-size: 0.9rem;
   }
   
-  .contact-text h3 {
-    font-size: 1rem;
-  }
-  
-  .contact-text a,
-  .contact-text span {
-    font-size: 0.9rem;
-  }
-  
-  .social-links h3 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .social-buttons {
-    gap: 0.875rem;
-  }
-  
   .social-button {
     width: 44px;
     height: 44px;
@@ -1711,20 +1715,89 @@ html {
   .contact-form {
     padding: 1.5rem;
   }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 3rem 1rem;
+  }
+  
+  .section-header {
+    margin-bottom: 2rem;
+  }
+  
+  .contact-content {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+  
+  .contact-info {
+    gap: 1.5rem;
+    width: 100%;
+  }
+  
+  .contact-details {
+    gap: 0.75rem;
+  }
+  
+  .contact-item {
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+  }
+  
+  .contact-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+  }
+  
+  .contact-text h3 {
+    font-size: 0.95rem;
+  }
+  
+  .contact-text a,
+  .contact-text span {
+    font-size: 0.85rem;
+  }
+  
+  .social-links h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .social-buttons {
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  
+  .social-button {
+    width: 42px;
+    height: 42px;
+    font-size: 0.95rem;
+  }
+  
+  .contact-form {
+    padding: 1.25rem;
+    width: 100%;
+  }
   
   .form-group input,
   .form-group textarea {
-    padding: 0.75rem;
+    padding: 0.625rem;
   }
   
   .submit-button {
-    padding: 0.875rem 1.5rem;
+    padding: 0.75rem 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
   .contact {
     padding: 2rem 0.5rem;
+  }
+  
+  .contact-container {
+    padding: 0 1rem;
   }
   
   .contact-info {
