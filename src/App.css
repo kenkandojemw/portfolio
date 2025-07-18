@@ -887,8 +887,9 @@ html {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
   margin-top: 2rem;
+  
 }
 
 .tech-badge {
@@ -2749,19 +2750,44 @@ footer {
   }
 
   .hamburger:hover {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
+    background: rgba(66, 153, 225, 0.1);
+    border-color: var(--card-border);
     transform: translateY(-1px);
   }
 
   .hamburger:hover .hamburger-icon i {
-    color: var(--surface-color);
+    color: var(--text-primary); /* Keep consistent theme color */
     transform: scale(1.1);
+  }
+
+  /* Remove focus/active states that cause persistent highlighting */
+  .hamburger:focus {
+    outline: none;
+    background: var(--surface-color);
+    border-color: var(--card-border);
+  }
+
+  .hamburger:active {
+    transform: scale(0.95);
+    background: var(--surface-color);
+    border-color: var(--card-border);
+  }
+
+  /* Ensure hamburger returns to normal state after interaction */
+  .hamburger:not(:hover):not(:active) {
+    background: var(--surface-color);
+    border-color: var(--card-border);
+    transform: none;
+  }
+
+  .hamburger:not(:hover):not(:active) .hamburger-icon i {
+    color: var(--text-primary); /* Consistent theme color */
+    transform: none;
   }
 
   .hamburger-icon {
     font-size: 1.2rem;
-    color: var(--text-color);
+    color: var(--text-primary);
     transition: all 0.3s ease;
   }
 }
@@ -3185,8 +3211,27 @@ a,
   background: rgba(66, 153, 225, 0.1);
 }
 
+.hamburger:hover i {
+  color: var(--text-primary); /* Keep consistent theme color on hover */
+}
+
 .hamburger:active {
   transform: scale(0.95);
+}
+
+.hamburger:focus {
+  outline: none;
+  background: transparent;
+}
+
+/* Ensure hamburger doesn't stay highlighted after click */
+.hamburger:not(:hover):not(:active) {
+  background: transparent;
+  transform: none;
+}
+
+.hamburger i {
+  color: var(--text-primary); /* Consistent theme color for icon */
 }
 
 .hamburger-box {

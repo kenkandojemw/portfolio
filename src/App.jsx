@@ -398,7 +398,10 @@ function App() {
             {/* Mobile Menu Toggle */}
             <button 
               className="hamburger" 
-              onClick={() => setMenuOpen(!menuOpen)} 
+              onClick={(e) => {
+                setMenuOpen(!menuOpen);
+                e.currentTarget.blur(); // Remove focus after click
+              }} 
               aria-expanded={menuOpen}
               aria-label="Toggle navigation menu"
               aria-controls="main-navigation"
