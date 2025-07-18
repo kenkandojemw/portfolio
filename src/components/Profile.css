@@ -154,13 +154,34 @@ body {
 }
 
 .floating-badges {
-  position: absolute;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
+  left: 0;
+  top: 0;
+  transform: none;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.profile-text {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.profile-name {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin: 0;
+  background: linear-gradient(120deg, var(--accent-color), #60a5fa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 8s linear infinite;
+  align-self: flex-start;
 }
 
 .tech-badge {

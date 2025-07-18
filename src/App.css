@@ -386,8 +386,53 @@ html {
   margin: 0 auto;
   padding: 1.2rem 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.tech-badge {
+  padding: 0.3rem 0.8rem;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+/* Animation for sliding in from left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* ====================================================
@@ -624,6 +669,11 @@ html {
 
 /* Common desktop styles for both medium and large screens */
 @media (min-width: 769px) {
+  /* Hide mobile controls on desktop */
+  .mobile-controls {
+    display: none;
+  }
+
   .nav-links {
     display: flex !important;
     position: static !important;
@@ -2538,20 +2588,49 @@ footer {
 
 /* Mobile Navigation Styles */
 @media (max-width: 768px) {
+  .nav-content {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between; /* Push items to far ends */
+    align-items: center;
+    width: 100%;
+  }
+
   .nav-brand {
     flex-direction: column;
     align-items: flex-start;
+    flex: 0 0 auto; /* Don't grow or shrink */
+    margin-right: auto; /* Push to far left */
   }
 
   .brand-name {
     font-size: 1.3rem;
     line-height: 1.1;
+    margin: 0;
   }
 
   .brand-tagline {
     font-size: 0.7rem;
     margin-top: 0.25rem;
+    margin-bottom: 0;
   }
+
+  /* Mobile controls container - far right with minimal spacing */
+  .mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem; /* Reduced space between icon and hamburger */
+    flex: 0 0 auto; /* Don't grow or shrink */
+    margin-left: auto; /* Push to far right */
+    justify-content: flex-end; /* Align items to the right within container */
+  }
+
+  /* Mobile theme toggle - hidden in mobile view */
+  .mobile-theme-toggle {
+    display: none;
+  }
+
+
 
   .nav-links {
     position: fixed;
@@ -2653,7 +2732,7 @@ footer {
     display: block;
   }
 
-  /* Hamburger improvements */
+  /* Hamburger improvements - matching theme toggle style */
   .hamburger {
     display: flex;
     flex-direction: column;
@@ -2661,7 +2740,7 @@ footer {
     align-items: center;
     width: 44px;
     height: 44px;
-    border: none;
+    border: 1px solid var(--card-border);
     background: var(--surface-color);
     border-radius: 8px;
     cursor: pointer;
@@ -2670,13 +2749,20 @@ footer {
   }
 
   .hamburger:hover {
-    background: var(--card-bg);
+    background: var(--primary-color);
     border-color: var(--primary-color);
+    transform: translateY(-1px);
+  }
+
+  .hamburger:hover .hamburger-icon i {
+    color: var(--surface-color);
+    transform: scale(1.1);
   }
 
   .hamburger-icon {
     font-size: 1.2rem;
     color: var(--text-color);
+    transition: all 0.3s ease;
   }
 }
 
@@ -2860,9 +2946,6 @@ a,
 }
 
 @media (max-width: 768px) {
-  .nav-content {
-    padding: 1rem;
-  }
 
   .nav-links {
     display: none;
@@ -3091,6 +3174,11 @@ a,
   min-height: 44px;
   border-radius: 8px;
   transition: all 0.3s ease;
+  order: 2;
+}
+
+.theme-toggle {
+  order: 1;
 }
 
 .hamburger:hover {
@@ -3171,6 +3259,67 @@ a,
 @media (max-width: 480px) {
   .nav-content {
     padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-brand {
+    margin-right: auto; /* Ensure brand stays far left */
+  }
+
+  .mobile-controls {
+    gap: 0.25rem; /* Even tighter spacing on small screens */
+    margin-left: auto; /* Ensure controls stay far right */
+  }
+
+
+
+  .hamburger {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hamburger-icon {
+    font-size: 1.1rem;
+  }
+
+  .brand-name {
+    font-size: 1.2rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.65rem;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 360px) {
+  .nav-content {
+    padding: 0.5rem 0.8rem;
+  }
+
+  .mobile-controls {
+    gap: 0.2rem; /* Ultra minimal spacing for very small screens */
+  }
+
+
+
+  .hamburger {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hamburger-icon {
+    font-size: 1rem;
+  }
+
+  .brand-name {
+    font-size: 1.1rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.6rem;
   }
 
   .nav-content h2 {

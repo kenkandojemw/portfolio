@@ -377,23 +377,37 @@ function App() {
           {/* Brand/Logo Section */}
           <div className="nav-brand">
             <a href="#about" className="brand-link" onClick={() => setMenuOpen(false)}>
-              <h1 className="brand-name">Ken Junior Kandoje</h1>
-              <span className="brand-tagline">Network Engineer & Tech Enthusiast</span>
+              <h1 className="brand-name">Ken</h1>
+              <span className="brand-tagline">Tech Enthusiast</span>
             </a>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="hamburger" 
-            onClick={() => setMenuOpen(!menuOpen)} 
-            aria-expanded={menuOpen}
-            aria-label="Toggle navigation menu"
-            aria-controls="main-navigation"
-          >
-            <span className="hamburger-icon">
-              <i className={`fas ${menuOpen ? 'fa-times' : 'fa-bars'}`}></i>
-            </span>
-          </button>
+          {/* Mobile Controls - Theme Toggle + Hamburger */}
+          <div className="mobile-controls">
+            {/* Theme Toggle - Mobile Only (Icon Only) */}
+            <button 
+              className="theme-toggle nav-utility-btn mobile-theme-toggle"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}
+              title={`Currently in ${darkMode ? 'dark' : 'light'} mode. Click to switch or use Ctrl+Shift+T`}
+              role="button"
+            >
+              <i className={`fas ${darkMode ? 'fa-sun' : 'fa-moon'}`} aria-hidden="true"></i>
+            </button>
+
+            {/* Mobile Menu Toggle */}
+            <button 
+              className="hamburger" 
+              onClick={() => setMenuOpen(!menuOpen)} 
+              aria-expanded={menuOpen}
+              aria-label="Toggle navigation menu"
+              aria-controls="main-navigation"
+            >
+              <span className="hamburger-icon">
+                <i className={`fas ${menuOpen ? 'fa-times' : 'fa-bars'}`}></i>
+              </span>
+            </button>
+          </div>
 
           {/* Navigation Links */}
           <div 
@@ -414,7 +428,10 @@ function App() {
                   key={item.href}
                   href={item.href}
                   className="nav-link primary-link"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => {
+                    setMenuOpen(false);
+                    e.currentTarget.blur();
+                  }}
                   role="menuitem"
                   aria-label={`Navigate to ${item.label} section`}
                 >
@@ -435,7 +452,10 @@ function App() {
                   key={item.href}
                   href={item.href}
                   className="nav-link secondary-link"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => {
+                    setMenuOpen(false);
+                    e.currentTarget.blur();
+                  }}
                   role="menuitem"
                   aria-label={`Navigate to ${item.label} section`}
                 >
@@ -504,7 +524,7 @@ function App() {
             <div className="contact-badges">
               <span className="contact-badge">
                 <i className="fas fa-map-marker-alt"></i>
-                <span className="badge-text">Malawi, Blantyre</span>
+                <span className="badge-text">Malawi</span>
               </span>
               <span className="contact-badge">
                 <i className="fas fa-globe"></i>
@@ -717,7 +737,7 @@ function App() {
                   </div>
                   <div className="contact-text">
                     <h3>Location</h3>
-                    <span>Malawi, Blantyre</span>
+                    <span>Malawi</span>
                   </div>
                 </div>
                 <div style={{ marginTop: '1.5rem', fontWeight: '600', fontSize: '1.1rem', color: 'var(--primary-color)', textAlign: 'center' }}>
